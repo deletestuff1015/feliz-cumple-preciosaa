@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>collage</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #dfe9d1; /* Verde matcha pastel */
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #4a5d23; /* Verde más oscuro para contraste */
+    }
+
+    .collage {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .collage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 3px solid #c3d5b0; /* Borde suave que combina con el fondo */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .collage img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Estilo para el modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 80%;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    /* Estilo para cerrar el modal */
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>y porque se que quieres fotos de mi...</h1>
+  <div class="collage">
+    <img src="f/1.JPG" alt="Foto 1" onclick="openModal(this.src)">
+    <img src="f/2.jpeg" alt="Foto 2" onclick="openModal(this.src)">
+    <img src="f/3.jpg" alt="Foto 3" onclick="openModal(this.src)">
+    <img src="f/4.JPG" alt="Foto 4" onclick="openModal(this.src)">
+    <img src="f/5.JPG" alt="Foto 5" onclick="openModal(this.src)">
+    <img src="f/6.JPG" alt="Foto 6" onclick="openModal(this.src)">
+  </div>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImage" src="" alt="Imagen ampliada">
+  </div>
+
+  <script>
+    // Función para abrir el modal y mostrar la imagen
+    function openModal(src) {
+      document.getElementById("myModal").style.display = "flex";
+      document.getElementById("modalImage").src = src;
+    }
+
+    // Función para cerrar el modal
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
